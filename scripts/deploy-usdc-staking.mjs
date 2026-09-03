@@ -9,7 +9,11 @@ const __dirname = path.dirname(__filename);
 // ARC Testnet config - Using Alchemy RPC for ARC Testnet
 const RPC_URL = 'https://arc-testnet.g.alchemy.com/v2/7qMPL9J75Ele4ocZTFwak';
 const CHAIN_ID = 5042002;
-const DEPLOYER_PRIVATE_KEY = '0xREDACTED';
+const DEPLOYER_PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY;
+if (!DEPLOYER_PRIVATE_KEY) {
+  console.error('Set DEPLOYER_PRIVATE_KEY in environment');
+  process.exit(1);
+}
 
 // USDC Token address on ARC Testnet (from Circle)
 const USDC_ADDRESS = '0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d'; // Native USDC on ARC
